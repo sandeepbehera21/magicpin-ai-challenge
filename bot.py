@@ -28,6 +28,22 @@ engine = VeraEngine()
 # 1. Health & Metadata Endpoints
 # -----------------------------------------------------------------------------
 
+@app.get("/")
+async def root():
+    return {
+        "status": "ok",
+        "app": "Vera Decision Engine",
+        "team": "Vera Decision Engine",
+        "endpoints": {
+            "healthz": "/v1/healthz",
+            "metadata": "/v1/metadata",
+            "context": "/v1/context",
+            "tick": "/v1/tick",
+            "reply": "/v1/reply",
+        }
+    }
+
+
 @app.get("/v1/healthz", response_model=HealthResponse)
 async def healthz():
     return HealthResponse(
