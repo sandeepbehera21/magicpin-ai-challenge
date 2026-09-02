@@ -1,0 +1,24 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Testing & coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environments & secrets
+.env
+.env.local
+.venv
+env/
+venv/
+ENV/
+
+# Scratch & logs
+scratch/
+*.log
+.system_generated/

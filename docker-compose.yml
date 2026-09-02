@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  vera-engine:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8080/v1/healthz')"]
+      interval: 10s
+      timeout: 3s
+      retries: 3

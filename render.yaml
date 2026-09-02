@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: magicpin-vera-decision-engine
+    env: docker
+    plan: free
+    region: oregon
+    healthCheckPath: /v1/healthz
+    autoDeploy: true
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: "1"
+      - key: MAX_ACTIONS_PER_TICK
+        value: "20"
+      - key: MIN_SCORE_THRESHOLD
+        value: "35.0"
