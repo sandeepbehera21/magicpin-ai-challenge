@@ -60,9 +60,7 @@ async def metadata():
         team_members=["Sandeep Kumar Behera"],
         model="deterministic-evidence-engine-v2",
         approach="Evidence-first deterministic decision engine with opportunity auction, merchant attention budgeting, counterfactual send gating, conversation-state routing, and LLM language realization.",
-        contact_email="vera-challenge@magicpin.in",
         version="2.0.0",
-        submitted_at="2026-04-26T08:00:00Z",
     )
 
 

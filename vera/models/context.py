@@ -300,6 +300,4 @@ class MetadataResponse(BaseModel):
     team_members: List[str]
     model: str
     approach: str
-    contact_email: str
     version: str
-    submitted_at: str
