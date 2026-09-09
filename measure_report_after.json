@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-09T12:28:42.770211+00:00",
+  "generated_at": "2026-09-09T13:28:43.684032+00:00",
   "tag": "after",
   "n_actions": 14,
   "actions": [
@@ -7,7 +7,7 @@
       "trigger_id": "trg_003_recall_due_priya",
       "merchant_id": "m_001_drmeera_dentist_delhi",
       "customer_id": "c_001_priya_for_m001",
-      "body": "Hi Priya, Dr. Meera's Dental Clinic here 🦷 Your 6-month cleaning recall is due for 12 November. Apke liye 2 slots ready hain: Wed 5 Nov, 6pm ya Thu 6 Nov, 5pm Your Dental Cleaning @ ₹299 booking is ready. Reply 1 for Wed, 2 for Thu, or tell us a time that works.",
+      "body": "Hi Priya, Dr. Meera's Dental Clinic here 🦷 Your 6-month cleaning recall is due for 12 November. Apke liye 2 slots ready hain: Wed 5 Nov, 6pm ya Thu 6 Nov, 5pm. Your Dental Cleaning @ ₹299 booking is ready. Reply 1 for Wed, 2 for Thu, or tell us a time that works.",
       "cta": "multi_choice_slot",
       "template_name": "merchant_recall_reminder_v1"
     },
@@ -15,7 +15,7 @@
       "trigger_id": "trg_005_renewal_due_bharat",
       "merchant_id": "m_002_bharat_dentist_mumbai",
       "customer_id": null,
-      "body": "Dr. Bharat, your magicpin Pro subscription renews in 12 days. Renewing keeps your verified Google ranking, automated posts, and badge active — critical for reversing your recent 7-day call dip in Andheri West. Reply CONFIRM to renew and keep your local search optimization uninterrupted.",
+      "body": "Dr. Bharat, your magicpin Pro plan for Bharat Dental Care in Andheri West renews in 12 days (₹4,999). Renewing protects your verified badge and activates automated local posts — critical for reversing your recent 7-day call dip in Andheri West and driving new patient bookings. Reply CONFIRM to renew and launch your search recovery campaign today.",
       "cta": "binary_confirm_cancel",
       "template_name": "vera_renewal_nudge_v1"
     },
@@ -23,7 +23,7 @@
       "trigger_id": "trg_009_winback_glamour",
       "merchant_id": "m_004_glamour_salon_pune",
       "customer_id": null,
-      "body": "Hi Anjali, 24 past clients in Aundh searched for your services since your listing paused 38 days ago. Reactivating your verified profile puts your services back at the top of local searches this weekend. Reply YES to review the reactivation draft and publish your offers today.",
+      "body": "Hi Anjali, 24 past clients in Aundh have been looking for Glamour Lounge Spa & Salon since your profile paused 38 days ago (search views dipped 30%). We'd love to help welcome them back to your salon this weekend — reopening your listing restores your top ranking for neighborhood clients. Reply YES to review your reactivation draft and reopen your bookings today.",
       "cta": "binary_yes_no",
       "template_name": "vera_winback_v1"
     },
@@ -31,7 +31,7 @@
       "trigger_id": "trg_008_curious_ask_studio11",
       "merchant_id": "m_003_studio11_salon_hyderabad",
       "customer_id": null,
-      "body": "Hi Lakshmi! Quick check from Kapra — Studio11 Family Salon reached 4980 Google views this month: what salon service has had the highest inquiry this week? I'll turn your answer into a fresh Google post + a 4-line WhatsApp share note for your clients. Takes 2 min.",
+      "body": "Hi Lakshmi! Studio11 Family Salon reached 4980 Google views in Kapra this month. Which salon service has had the highest inquiry from Kapra clients this week — Hair Spa or Facial? Reply 1 for Hair Spa, 2 for Facial, or text your top service and I'll stage a targeted Google post with your active offers today.",
       "cta": "open_ended",
       "template_name": "vera_curious_ask_v1"
     },
@@ -39,7 +39,7 @@
       "trigger_id": "trg_010_ipl_match_delhi",
       "merchant_id": "m_005_pizzajunction_restaurant_delhi",
       "customer_id": null,
-      "body": "Quick heads-up Suresh — DC vs MI at Arun Jaitley Stadium 26 April. On big match days your dine-in covers dip vs your Saturday average as fans order at home. Skipping dine-in promos and spotlighting your active Buy 1 Pizza Get 1 Free (Tue-Thu) captures this stay-at-home surge. Want me to stage the delivery banner and social story now?",
+      "body": "Hi Suresh! Quick heads-up for SK Pizza Junction in Sant Nagar — DC vs MI at Arun Jaitley Stadium on 26 April. Big match nights pe dine-in covers 12% dip hote hain as fans order from home. Extending your Buy 1 Pizza Get 1 Free (Tue-Thu) as a match-night delivery special captures this match rush directly. Reply YES and I'll stage the match-day banner on your Google profile today.",
       "cta": "binary_yes_no",
       "template_name": "vera_restaurant_ipl_v1"
     },
@@ -47,7 +47,7 @@
       "trigger_id": "trg_013_corporate_thali_planning",
       "merchant_id": "m_006_southindiancafe_restaurant_bangalore",
       "customer_id": null,
-      "body": "Hi Suresh, here's a starter draft for your corporate lunch packages in Indiranagar:\n\nMylari South Indian Cafe Corporate Lunch Program\n- Anchored on your Weekday Lunch Thali @ ₹149 (currently 18 orders/day)\n- Corporate bulk pricing for weekday office delivery at scale\n- Optional dessert and executive platters for larger catering orders\n\nWant me to stage this bulk offer on your profile and draft a WhatsApp share template for local HR managers?",
+      "body": "Hi Suresh, here's a starter draft for your corporate lunch packages in Indiranagar:\n\nMylari South Indian Cafe Corporate Lunch Program\n- Anchored on your active Weekday Lunch Thali @ ₹149 (currently 18 orders/day)\n- Corporate bulk pricing for weekday office delivery at scale\n- Advance booking window ensures smooth kitchen prep alongside daily dine-in rush\n\nReply YES and I'll stage this bulk package on your Google profile for your review today.",
       "cta": "binary_confirm_cancel",
       "template_name": "vera_planning_v1"
     },
@@ -63,7 +63,7 @@
       "trigger_id": "trg_011_review_theme_late_delivery",
       "merchant_id": "m_005_pizzajunction_restaurant_delhi",
       "customer_id": null,
-      "body": "Hi Suresh, 4 recent reviews flagged delivery delays in Sant Nagar (e.g. \"took 50 mins for a 15 min ride\"). Delivery makes up ~65% of your orders (180 delivery vs 95 dine-in this month), so a slow delivery day costs you the most. Want me to stage a Google post promoting your active Buy 1 Pizza Get 1 Free (Tue-Thu) to shift orders into calmer hours?",
+      "body": "Hi Suresh, 4 recent reviews for SK Pizza Junction flagged delivery delays in Sant Nagar (e.g. \"took 50 mins for a 15 min ride\"). Delivery is a big share of your business (180 delivery vs 95 dine-in this month), so a slow delivery day costs you the most. Reply YES and I'll stage a Google post promoting your active Buy 1 Pizza Get 1 Free (Tue-Thu) to shift orders into calmer hours.",
       "cta": "binary_yes_no",
       "template_name": "vera_review_theme_v1"
     },
@@ -79,7 +79,7 @@
       "trigger_id": "trg_016_kids_yoga_program_drafting",
       "merchant_id": "m_008_zenyoga_gym_chennai",
       "customer_id": null,
-      "body": "Hi Padma, here's the starter outline for your Kids Yoga Summer Camp in Mylapore:\n\nZen Yoga Studio Kids Yoga Program\n- 4-week camp, 3 classes/week, ages 7-12 as we discussed (₹2,499)\n- Bundled with your active First Month @ ₹499\n\nWant me to stage this to your Google profile for your review?",
+      "body": "Hi Padma, here is the structured summer practice draft for Zen Yoga Studio in Mylapore:\n\nZen Yoga Studio Kids Yoga & Mindfulness Camp\n- Daily Practice: 4 weeks of structured asana movement, breathwork, and focus games (3 classes/week, ages 7-12)\n- Program Fee: ₹2,499 for the complete 4-week module\n- Parent Practice: Bundled with your active First Month @ ₹499 for parents practicing simultaneously\n- Core Outcome: Builds physical discipline, posture balance, and morning concentration\n\nReply YES and I'll stage this mindful program on your Google profile for your review today.",
       "cta": "binary_confirm_cancel",
       "template_name": "vera_planning_v1"
     },
@@ -87,7 +87,7 @@
       "trigger_id": "trg_024_perf_spike_zen",
       "merchant_id": "m_008_zenyoga_gym_chennai",
       "customer_id": null,
-      "body": "Hi Padma, great traction: your Google calls jumped 15% this week from high-intent searches in Mylapore, driven by your kids yoga post. To convert these visitors into active members before momentum slows, want me to schedule 2 follow-up posts featuring your active First Month @ ₹499?",
+      "body": "Hi Padma, wonderful momentum for Zen Yoga Studio: student inquiries in Mylapore jumped 15% this week, driven by your kids yoga post (18 calls total). To welcome these families to the studio, reply YES and I'll stage 2 community spotlight posts featuring mindful daily practice and your active First Month @ ₹499.",
       "cta": "binary_yes_no",
       "template_name": "vera_perf_spike_v1"
     },
@@ -95,7 +95,7 @@
       "trigger_id": "trg_023_competitor_opened_dentist",
       "merchant_id": "m_001_drmeera_dentist_delhi",
       "customer_id": null,
-      "body": "Dr. Meera, Smile Studio opened 1.3 km away offering Dental Cleaning @ ₹199. Recommended strategy: don't discount your rates; instead emphasize your digital RVG equipment, strict sterilization standards, and verified doctor experience. Want me to draft 3 Google posts highlighting your clinical quality to protect your margins?",
+      "body": "Dr. Meera, a new clinic (Smile Studio) opened 1.3 km from your clinic in Lajpat Nagar offering Dental Cleaning @ ₹199 against your Dental Cleaning @ ₹299. Patients face a choice between discount commodity and clinical craft. Cutting prices erodes patient trust — your digital RVG precision, multi-stage sterilization, and verified clinical experience are your true moat. Reply YES and I'll stage 3 clinical-authority posts highlighting your sterilization standards and equipment craft today.",
       "cta": "binary_yes_no",
       "template_name": "vera_competitor_defense_v1"
     },
@@ -103,7 +103,7 @@
       "trigger_id": "trg_021_unverified_gbp_sunrise",
       "merchant_id": "m_010_sunrisepharm_pharmacy_lucknow",
       "customer_id": null,
-      "body": "Vikas, your Google Business Profile in Gomti Nagar is currently unverified. Verifying it unlocks an estimated 30% uplift in local search phone calls and patient map directions. Want me to guide you through the phone verification steps today?",
+      "body": "Vikas, Sunrise Medicos on Google in Gomti Nagar is currently unverified. When neighborhood patients search for urgent local care, verified listings capture ~30% more direct calls and store visits. Confirming your listing bridges local searchers directly to your pharmacy counter. Reply YES and I'll start the quick phone verification with you right now.",
       "cta": "binary_yes_no",
       "template_name": "vera_gbp_unverified_v1"
     },
@@ -111,7 +111,7 @@
       "trigger_id": "trg_025_dormancy_glamour",
       "merchant_id": "m_004_glamour_salon_pune",
       "customer_id": null,
-      "body": "Hi Anjali, your Google listing reached 1200 views in Aundh this month, but hasn't had fresh posts in 38 days. Publishing a 3-post weekend spotlight for your core services captures these active searchers. Want me to draft the weekend posts for your approval?",
+      "body": "Hi Anjali, Glamour Lounge Spa & Salon reached 1200 search views in Aundh this month — neighborhood demand for beauty care is blooming. While your profile has been quiet for 38 days, local clients are actively looking for appointments. Reply YES and I'll stage a seasonal spotlight post showcasing your top treatments for your review today.",
       "cta": "binary_yes_no",
       "template_name": "vera_dormancy_check_v1"
     }
