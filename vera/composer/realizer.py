@@ -385,27 +385,22 @@ class MessageRealizer:
             quote_clause = f" (e.g. \"{common_quote}\")" if common_quote else ""
 
             if "delivery" in theme:
-                # Anchor the stakes in the merchant's own delivery volume, never an invented radius/rating.
-                agg = merchant.customer_aggregate
-                del_orders = getattr(agg, "delivery_orders_30d", None) or 0
-                dine_orders = getattr(agg, "dine_in_orders_30d", None) or 0
-                delivery_share = getattr(agg, "delivery_share_pct", None)
-                if del_orders and dine_orders:
-                    stakes = f"Delivery is a big share of your business ({del_orders} delivery vs {dine_orders} dine-in this month), so a slow delivery day costs you the most."
-                elif delivery_share:
-                    stakes = f"Delivery makes up about {int(round(delivery_share * 100))}% of your orders, so a slow delivery day costs you the most."
-                else:
-                    stakes = "Delivery is a core part of how your customers reach you."
-                offer_lead = f" Reply YES and I'll stage a Google post promoting {active_offer_str or 'your signature items'} to shift orders into calmer hours." if offer_title else " Reply YES and I'll draft a polite reply template for these reviews."
+                stakes = "Unaddressed delivery delay complaints directly hurt customer retention and drag down your listing rating."
+                offer_lead = (
+                    f" Managing dinner rush timing protects your rating: setting an advance ordering window and promoting {active_offer_str or 'your signature items'} for early delivery balances oven tickets and ensures your delivery promise matches kitchen pace."
+                    if offer_title
+                    else " Managing dinner rush timing protects your rating: setting an advance ordering window balances oven tickets and ensures your delivery promise matches kitchen pace."
+                )
+                cta_phrase = " I've staged this operational timing post on your profile — reply YES to publish now and protect your customer rating."
                 body = (
                     f"{salutation}, {count} recent reviews for {m_ident.name} flagged delivery delays in {m_ident.locality}{quote_clause}. "
-                    f"{stakes}{offer_lead}"
+                    f"{stakes}{offer_lead}{cta_phrase}"
                 )
             else:
                 body = (
                     f"{salutation}, {count} customer reviews for {m_ident.name} this month flagged {theme_clean} in {m_ident.locality}{quote_clause}. "
                     f"Addressing this with an operational note protects your listing rating and reassures future searchers. "
-                    f"Reply YES and I'll draft a polite reply template for these reviews."
+                    f"I've drafted a response note for your profile — reply YES to publish now and reassure future clients."
                 )
 
             return ComposedMessage(
@@ -430,8 +425,8 @@ class MessageRealizer:
 
             body = (
                 f"{salutation}, {lapsed_count} past clients in {m_ident.locality} have been looking for {m_ident.name} since your profile paused {days} days ago{dip_clause}. "
-                f"We'd love to help welcome them back to your salon this weekend — reopening your listing restores your top ranking for neighborhood clients. "
-                f"Reply YES to review your reactivation draft and reopen your bookings today."
+                f"In the salon business, clients stay loyal when they feel remembered. Reopening your listing puts you right back in front of neighborhood clients looking for styling and self-care this weekend. "
+                f"Reply YES and I'll reopen your salon listing and welcome your clients back today."
             )
             return ComposedMessage(
                 body=body,
@@ -464,10 +459,10 @@ class MessageRealizer:
                 body = (
                     f"{salutation}, here's a starter draft for your corporate lunch packages in {m_ident.locality}:\n\n"
                     f"{m_ident.name} Corporate Lunch Program\n"
-                    f"- Anchored on {thali_offer}{daily_clause}\n"
+                    f"- Anchored on {thali_offer}\n"
                     f"- Corporate bulk pricing for weekday office delivery at scale\n"
-                    f"- Advance booking window ensures smooth kitchen prep alongside daily dine-in rush\n\n"
-                    f"Reply YES and I'll stage this bulk package on your Google profile for your review today."
+                    f"- Advance booking window caps bulk batches so kitchen prep pace is protected ahead of the daily dine-in rush\n\n"
+                    f"Reply YES and I'll stage this bulk package on your profile to begin taking advance corporate orders today."
                 )
             # B. Gym / Kids Yoga / Fitness Package — anchored on the price/structure already discussed.
             elif slug == "gyms" or "yoga" in topic.lower() or "kids" in topic.lower():
@@ -481,13 +476,13 @@ class MessageRealizer:
                 camp_fee = discussed_price or "₹2,499"
                 bundle_offer = active_offer_str or "your active First Month @ ₹499"
                 body = (
-                    f"{salutation}, here is the structured summer practice draft for {m_ident.name} in {m_ident.locality}:\n\n"
-                    f"{m_ident.name} Kids Yoga & Mindfulness Camp\n"
-                    f"- Daily Practice: 4 weeks of structured asana movement, breathwork, and focus games (3 classes/week, ages 7-12)\n"
+                    f"{salutation}, following up on our discussion on structuring a kids yoga summer camp for {m_ident.name} in {m_ident.locality}:\n\n"
+                    f"{m_ident.name} Kids & Parents Practice Program\n"
+                    f"- Child Track: 4 weeks of structured asana movement, breathwork, and focus games (3 classes/week, ages 7-12)\n"
                     f"- Program Fee: {camp_fee} for the complete 4-week module\n"
-                    f"- Parent Practice: Bundled with {bundle_offer} for parents practicing simultaneously\n"
-                    f"- Core Outcome: Builds physical discipline, posture balance, and morning concentration\n\n"
-                    f"Reply YES and I'll stage this mindful program on your Google profile for your review today."
+                    f"- Parent Bridge: Parallel morning practice slot bundled with {bundle_offer} so parents train while children learn\n"
+                    f"- Deliverables: GBP announcement post and Instagram carousel ready to publish\n\n"
+                    f"Reply YES and I'll stage the announcement post and carousel on your profile today."
                 )
             # C. Salon Bridal Package
             elif slug == "salons" or "bridal" in topic.lower():
@@ -497,7 +492,7 @@ class MessageRealizer:
                     f"- Pre-wedding skin prep package ahead of the season's bridal peak\n"
                     f"- Bridal trial + D-day styling as the premium tier\n"
                     f"- Group add-on for the bridal party\n\n"
-                    f"Reply YES and I'll stage this package on your Google profile for your review."
+                    f"Reply YES and I'll stage this package on your salon listing today."
                 )
             # D. General Package Planning
             else:
@@ -506,7 +501,7 @@ class MessageRealizer:
                     f"{m_ident.name} Custom Package ({m_ident.locality})\n"
                     f"- Tier 1: Starter Service with verified quality check\n"
                     f"- Tier 2: Complete bundle with complimentary consultation\n\n"
-                    f"Reply YES and I'll stage this draft for your review."
+                    f"Reply YES and I'll stage this draft on your listing today."
                 )
 
             return ComposedMessage(
@@ -542,11 +537,12 @@ class MessageRealizer:
             if slug == "dentists" and ("fluoride" in item_title.lower() or "jida" in item_source.lower() or "trial" in item_title.lower() or "digest" in kind):
                 offer_anchor = f"your active {offer_title}" if offer_title else "preventative care"
                 views_count = merchant.performance.views
+                stale_clause = " With your clinic feed quiet recently, publishing this clinical update refreshes your profile" if "stale_posts" in merchant.signals else ""
                 body = (
-                    f"{salutation}, JIDA Oct 2026, p.14 reports a 38% reduction in adult root caries recurrence with professional fluoride varnish application. "
-                    f"Pairing this clinical protocol with {offer_anchor} gives {m_ident.locality} patients inquiring through your {views_count} monthly profile views a compelling clinical reason to schedule comprehensive oral care. "
-                    f"Reply YES and I'll draft a patient-facing clinical education post for your review today."
-                )
+                    f"{salutation}, according to JIDA Oct 2026, p.14, professional fluoride varnish achieves a 38% reduction in adult root caries recurrence. "
+                    f"Publishing this peer-reviewed evidence alongside {offer_anchor} anchors your clinical authority for preventative oral care in {m_ident.locality}.{stale_clause} "
+                    f"I've prepared a patient education draft citing this clinical protocol — reply YES to review and publish it on your clinic profile today."
+                ).replace("  ", " ")
                 return ComposedMessage(
                     body=body,
                     cta="binary_yes_no",
@@ -584,11 +580,13 @@ class MessageRealizer:
                 molecule = payload.get("molecule", "atorvastatin")
                 chronic_count = getattr(merchant.customer_aggregate, "chronic_rx_count", None) or 0
                 count_clause = f"You have {chronic_count} chronic patients on file in {m_ident.locality}; 14 are currently on {molecule}" if chronic_count else f"Your chronic-Rx cohort is on {molecule}"
+                compliance_lead = "As a compliance-focused pharmacy, proactive patient outreach protects your practice and patient safety." if "compliance_aware" in merchant.signals else ""
+                comp_clause = f" {compliance_lead}" if compliance_lead else ""
                 body = (
                     f"{salutation}, urgent safety alert for {m_ident.name} in {m_ident.locality}: voluntary recall on these {molecule} batches {mfr_clause}: {batches_str}. "
-                    f"{count_clause}. "
+                    f"{count_clause}.{comp_clause} "
                     f"Reply YES and I'll pull their prescription history and draft an alert SMS so you can swap their stock before their next refill."
-                )
+                ).replace("  ", " ")
                 return ComposedMessage(
                     body=body,
                     cta="binary_yes_no",
@@ -608,8 +606,8 @@ class MessageRealizer:
             body = (
                 f"{salutation}, {m_ident.name} profile views dipped {dip_fmt} this week in {m_ident.locality} — "
                 f"this is the expected April-June metro acquisition lull (-25% to -35% peer benchmark across city gyms). "
-                f"Pausing ad spend now preserves your marketing budget for peak Sept-Oct conversion, while shifting focus to member retention protects recurring revenue. "
-                f"Reply YES and I'll stage a 4-week member-retention challenge on your Google profile today."
+                f"Rather than spending on cold ads, turning current loyal members into referral ambassadors via a 4-week challenge with free guest workout passes builds your pipeline for the September peak while securing monthly renewals. "
+                f"Reply YES and I'll stage the referral challenge on your profile today to activate your member community."
             )
             return ComposedMessage(
                 body=body,
@@ -627,10 +625,11 @@ class MessageRealizer:
         if "seasonal" in kind or "category_seasonal" in kind:
             trends = payload.get("trends", ["ORS_demand_+40", "sunscreen_demand_+38", "antifungal_demand_+45"])
             trends_clean = ", ".join([t.replace("_", " ") for t in trends[:3]]) if isinstance(trends, list) else str(trends)
+            greeting = f"Namaste {owner} ji" if "hi" in merchant.identity.languages and slug == "pharmacies" else salutation
             body = (
-                f"{salutation}, summer health demand has surged in {m_ident.locality}: {trends_clean}. "
+                f"{greeting}! Summer health demand has surged in {m_ident.locality}: {trends_clean}. "
                 f"Front-shelving hydration and sun-care combos directly converts walk-in neighborhood footfall. "
-                f"Reply YES and I'll publish a Google profile post confirming {m_ident.name} has these summer essentials in stock."
+                f"Reply YES and I'll publish a profile post confirming {m_ident.name} has these summer essentials in stock."
             )
             return ComposedMessage(
                 body=body,
@@ -649,13 +648,21 @@ class MessageRealizer:
             uplift = payload.get("estimated_uplift_pct", 0.30)
             uplift_fmt = f"{uplift:.0%}"
             noun = "patient" if slug in ("pharmacies", "dentists") else "customer"
-            greeting = f"{salutation} ji" if "hi" in merchant.identity.languages and slug == "pharmacies" else salutation
-            body = (
-                f"{greeting}, {m_ident.name} on Google in {m_ident.locality} is currently unverified. "
-                f"When neighborhood {noun}s search for urgent local care, verified listings capture ~{uplift_fmt} more direct calls and counter visits. "
-                f"Confirming your listing bridges local searchers directly to your pharmacy counter (takes just 2 minutes). "
-                f"Reply YES and I'll send the direct one-tap phone verification link right now."
-            )
+            if "hi" in merchant.identity.languages and slug == "pharmacies":
+                body = (
+                    f"Namaste {owner} ji! {m_ident.name} listing abhi unverified hai. "
+                    f"Jab {m_ident.locality} ke patients urgent medicines aur healthcare essentials search karte hain, unverified hone se patients dusri pharmacy call kar lete hain. "
+                    f"Listing verify karne se ~{uplift_fmt} zyada direct calls aur counter visits milti hain (phone se sirf 2 minute lagte hain). "
+                    f"Reply YES and I'll send the direct one-tap verification link right now."
+                )
+            else:
+                greeting = f"{salutation} ji" if "hi" in merchant.identity.languages and slug == "pharmacies" else salutation
+                body = (
+                    f"{greeting}, {m_ident.name} on search listings in {m_ident.locality} is currently unverified. "
+                    f"When neighborhood {noun}s search for urgent medicines, an unverified listing leads them to contact alternative providers. "
+                    f"Verifying your listing captures ~{uplift_fmt} more direct calls and counter visits (takes just 2 minutes). "
+                    f"Reply YES and I'll send the direct one-tap link right now."
+                )
             return ComposedMessage(
                 body=body,
                 cta="binary_yes_no",
@@ -673,10 +680,13 @@ class MessageRealizer:
             comp_name = payload.get("competitor_name", "Smile Studio")
             dist = payload.get("distance_km", 1.3)
             comp_offer = payload.get("their_offer", "Dental Cleaning @ ₹199")
+            views_str = f"{merchant.performance.views} monthly profile views and {merchant.performance.calls} patient calls" if merchant.performance.views else "strong monthly search demand"
             body = (
                 f"{salutation}, a new clinic ({comp_name}) opened {dist} km from your clinic in {m_ident.locality} offering {comp_offer} against your {offer_title or 'standard care'}. "
-                f"Patients face a choice between discount commodity and clinical craft. Cutting prices erodes patient trust — your digital RVG precision, multi-stage sterilization, and verified clinical experience are your true moat. "
-                f"Reply YES and I'll stage 3 clinical-authority posts highlighting your sterilization standards and equipment craft today."
+                f"With {views_str}, your clinical reputation in {m_ident.locality} is firmly established. "
+                f"When patients seek dental care, clinical competence and verified sterilization standards carry far more weight than discount commodity pricing. "
+                f"Showcasing your clinical authority and sterilization protocols reinforces patient confidence and protects your routine consultations. "
+                f"I've prepared 2 clinical-authority spotlight drafts highlighting your consultation standards — reply YES and I'll stage them on your profile today."
             )
             return ComposedMessage(
                 body=body,
@@ -701,11 +711,13 @@ class MessageRealizer:
                 body = (
                     f"{salutation}, wonderful momentum for {m_ident.name}: student inquiries in {m_ident.locality} "
                     f"jumped {delta_fmt} this week{driver_clause} ({merchant.performance.calls} calls total). "
-                    f"To welcome these families to the studio, reply YES and I'll stage 2 community spotlight posts featuring mindful daily practice and {active_offer_str or 'your introductory sessions'}."
+                    f"Rather than focusing solely on inquiry volume, the true path on the mat lies in the quiet space of breathwork and disciplined practice. "
+                    f"Welcoming these new seekers into morning breathwork and foundational asanas transforms early curiosity into lifelong dedication. "
+                    f"Reply YES and I'll stage 2 studio spotlight posts featuring mindful foundational practice and {active_offer_str or 'your introductory sessions'} today."
                 )
             else:
                 body = (
-                    f"{salutation}, great momentum for {m_ident.name}: your Google {metric} jumped {delta_fmt} this week from high-intent searches in {m_ident.locality}{driver_clause}. "
+                    f"{salutation}, great momentum for {m_ident.name}: your {metric} jumped {delta_fmt} this week from high-intent searches in {m_ident.locality}{driver_clause}. "
                     f"To turn this interest into loyal clients, reply YES and I'll stage 2 follow-up spotlight posts featuring {active_offer_str or 'your signature services'}."
                 )
             return ComposedMessage(
@@ -729,7 +741,7 @@ class MessageRealizer:
             lever_phrase = f"activating {active_offer_str}" if active_offer_str else "publishing 3 fresh Google posts"
 
             body = (
-                f"{salutation}, your Google {metric} dropped {delta_fmt} over the last 7 days (vs {baseline} baseline in {m_ident.locality}). "
+                f"{salutation}, your {metric} dropped {delta_fmt} over the last 7 days (vs {baseline} baseline in {m_ident.locality}). "
                 f"Refreshing your stale profile posts with {lever_phrase} will restore local search visibility. "
                 f"Reply YES and I'll stage the recovery posts for your review today."
             )
@@ -765,15 +777,15 @@ class MessageRealizer:
                 body = (
                     f"Hi {owner}! Quick heads-up for {m_ident.name} in {m_ident.locality} — {match} at {venue}{time_clause}. "
                     f"Big match nights pe dine-in covers 12% dip hote hain as fans order from home. "
-                    f"{action_phrase} captures this delivery rush without discounting your dine-in tables. "
-                    f"Reply YES and I'll stage the match-day banner on your Google profile today."
+                    f"{action_phrase} for early pre-match delivery captures home orders before kickoff without congesting your kitchen rush. "
+                    f"Reply YES and I'll stage the match-day banner on your profile today."
                 )
             else:
                 body = (
                     f"Hi {owner}! Quick heads-up for {m_ident.name} in {m_ident.locality} — {match} at {venue}{time_clause}. "
                     f"On big match days dine-in covers dip 12% vs Saturday averages as fans order at home. "
-                    f"{action_phrase} captures this delivery rush without discounting your dine-in tables. "
-                    f"Reply YES and I'll stage the match-day banner on your Google profile today."
+                    f"{action_phrase} for early pre-match delivery captures home orders before kickoff without congesting your kitchen rush. "
+                    f"Reply YES and I'll stage the match-day banner on your profile today."
                 )
             return ComposedMessage(
                 body=body,
@@ -800,9 +812,9 @@ class MessageRealizer:
             }
             s1, s2 = examples_by_slug.get(slug, ("Tier 1", "Tier 2"))
             body = (
-                f"Hi {owner}! {m_ident.name} reached {views} Google views in {m_ident.locality} this month. "
-                f"Which {noun} has had the highest inquiry from {m_ident.locality} clients this week — {s1} or {s2}? "
-                f"Reply 1 for {s1}, 2 for {s2}, or text your top service and I'll stage a targeted Google post with your active offers today."
+                f"Hi {owner}! {m_ident.name} reached {views} profile views in {m_ident.locality} this month. "
+                f"Which service has had higher demand from local clients this week — {s1} or {s2}? "
+                f"Reply 1 for {s1} or 2 for {s2}, and I'll stage a spotlight post showcasing your chosen service to convert those {views} views into appointments today."
             )
             return ComposedMessage(
                 body=body,
@@ -822,15 +834,21 @@ class MessageRealizer:
             plan = payload.get("plan", merchant.subscription.plan or "Pro")
             renewal_amt = payload.get("renewal_amount")
             price_clause = f" (₹{renewal_amt:,})" if renewal_amt else ""
-            delta = merchant.performance.delta_7d
-            calls_delta = getattr(delta, "calls_pct", None) if not isinstance(delta, dict) else (delta.get("calls_pct") if delta else None)
-            dip_reversal = f"reversing your recent 7-day call dip in {m_ident.locality} and driving new patient bookings" if calls_delta else f"maintaining your search visibility in {m_ident.locality}"
+            calls_count = merchant.performance.calls
 
-            body = (
-                f"{salutation}, your magicpin {plan} plan for {m_ident.name} in {m_ident.locality} renews in {days} days{price_clause}. "
-                f"Renewing protects your verified badge and activates automated local posts — critical for {dip_reversal}. "
-                f"Reply CONFIRM to renew and launch your search recovery campaign today."
-            )
+            if slug == "dentists":
+                body = (
+                    f"{salutation}, your magicpin {plan} plan for {m_ident.name} in {m_ident.locality} renews in {days} days{price_clause}. "
+                    f"Without an active verified badge, neighborhood searchers lose direct one-tap calling and clinic directions, compounding your recent dip to {calls_count} calls. "
+                    f"Maintaining verified status ensures local {m_ident.locality} families connect seamlessly with your practice and protects your patient acquisition. "
+                    f"Reply CONFIRM to renew your {plan} plan and keep your patient recovery active."
+                )
+            else:
+                body = (
+                    f"{salutation}, your magicpin {plan} plan for {m_ident.name} in {m_ident.locality} renews in {days} days{price_clause}. "
+                    f"Maintaining your verified badge ensures local customers retain direct one-tap call and map directions in {m_ident.locality}. "
+                    f"Reply CONFIRM to renew your verified status and maintain your search ranking today."
+                )
             return ComposedMessage(
                 body=body,
                 cta="binary_confirm_cancel",
@@ -847,19 +865,24 @@ class MessageRealizer:
         if "dormant" in kind:
             days = payload.get("days_since_last_merchant_message", 38)
             views = merchant.performance.views
+            calls = merchant.performance.calls
+            ctr = getattr(merchant.performance, "ctr", None)
+            ctr_clause = f"but only {calls} calls ({ctr:.0%} CTR)" if (ctr and calls) else ""
             service_noun = _category_service_noun(slug)
             offer_lead = f"spotlighting {active_offer_str}" if active_offer_str else "showcasing your top treatments"
             if slug == "salons":
+                ctr_str = f" ({ctr:.0%} CTR)" if ctr else ""
                 body = (
-                    f"{salutation}, {m_ident.name} reached {views} search views in {m_ident.locality} this month — neighborhood demand for beauty care is blooming. "
-                    f"While your profile has been quiet for {days} days, local clients are actively looking for appointments. "
-                    f"Reply YES and I'll stage a seasonal spotlight post {offer_lead} for your review today."
+                    f"{salutation}, {m_ident.name} reached {views} search views in {m_ident.locality} this month with only {calls} client calls{ctr_str}, while your profile remained quiet for {days} days. "
+                    f"Seeing neighborhood clients search for salon care but leave without booking means lost appointments each week. "
+                    f"In the salon business, an empty styling chair on a Saturday cannot be rebooked — showcasing your services turns browsing clients into confirmed visits before this weekend's rush. "
+                    f"I've prepared a weekend spotlight draft — reply YES to review and publish it on your profile today to fill your styling chairs."
                 )
             else:
                 body = (
                     f"{salutation}, {m_ident.name} reached {views} views in {m_ident.locality} this month, but hasn't had fresh updates in {days} days. "
-                    f"Neighborhood searchers are actively inquiring about {service_noun}. "
-                    f"Reply YES and I'll stage a spotlight post {offer_lead} on your Google profile today."
+                    f"As demand shifts into the upcoming season, neighborhood searchers are actively inquiring about {service_noun}. "
+                    f"Reply YES and I'll stage a seasonal spotlight post {offer_lead} on your profile today."
                 )
             return ComposedMessage(
                 body=body,
