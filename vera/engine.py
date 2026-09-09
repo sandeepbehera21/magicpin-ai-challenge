@@ -233,11 +233,23 @@ class VeraEngine:
     def process_reply(self, reply_body: ReplyBody) -> ReplyResponse:
         merchant = self.context_store.get_merchant(reply_body.merchant_id) if reply_body.merchant_id else None
         category = self.context_store.get_category(merchant.category_slug) if merchant else None
-        return self.state_machine.process_reply(
+        response = self.state_machine.process_reply(
             body=reply_body,
             merchant=merchant,
             category=category,
         )
+        # A conversation that the state machine put into the suppressed state means
+        # the merchant opted out (STOP / not-interested). Propagate that to the
+        # attention budget so future ticks stop generating sends for this merchant.
+        if reply_body.conversation_id and response.action == "end":
+            memory = self.state_machine.get_or_create_memory(
+                reply_body.conversation_id,
+                reply_body.merchant_id or (merchant.merchant_id if merchant else ""),
+                reply_body.customer_id,
+            )
+            if memory.is_suppressed and merchant is not None:
+                self.attention_budget.record_opt_out(merchant.merchant_id)
+        return response
 
     def compose_standalone(
         self,

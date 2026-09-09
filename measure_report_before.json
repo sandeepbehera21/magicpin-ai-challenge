@@ -1,0 +1,119 @@
+{
+  "generated_at": "2026-09-09T12:59:47.112349+00:00",
+  "tag": "before",
+  "n_actions": 14,
+  "actions": [
+    {
+      "trigger_id": "trg_003_recall_due_priya",
+      "merchant_id": "m_001_drmeera_dentist_delhi",
+      "customer_id": "c_001_priya_for_m001",
+      "body": "Hi Priya, Dr. Meera's Dental Clinic here 🦷 Your 6-month cleaning recall is due for 12 November. Apke liye 2 slots ready hain: Wed 5 Nov, 6pm ya Thu 6 Nov, 5pm Your Dental Cleaning @ ₹299 booking is ready. Reply 1 for Wed, 2 for Thu, or tell us a time that works.",
+      "cta": "multi_choice_slot",
+      "template_name": "merchant_recall_reminder_v1"
+    },
+    {
+      "trigger_id": "trg_005_renewal_due_bharat",
+      "merchant_id": "m_002_bharat_dentist_mumbai",
+      "customer_id": null,
+      "body": "Dr. Bharat, your magicpin Pro subscription renews in 12 days. Renewing keeps your verified Google ranking, automated posts, and badge active — critical for reversing your recent 7-day call dip in Andheri West. Reply CONFIRM to renew and keep your local search optimization uninterrupted.",
+      "cta": "binary_confirm_cancel",
+      "template_name": "vera_renewal_nudge_v1"
+    },
+    {
+      "trigger_id": "trg_009_winback_glamour",
+      "merchant_id": "m_004_glamour_salon_pune",
+      "customer_id": null,
+      "body": "Hi Anjali, 24 past clients in Aundh searched for your services since your listing paused 38 days ago. Reactivating your verified profile puts your services back at the top of local searches this weekend. Reply YES to review the reactivation draft and publish your offers today.",
+      "cta": "binary_yes_no",
+      "template_name": "vera_winback_v1"
+    },
+    {
+      "trigger_id": "trg_008_curious_ask_studio11",
+      "merchant_id": "m_003_studio11_salon_hyderabad",
+      "customer_id": null,
+      "body": "Hi Lakshmi! Quick check from Kapra — Studio11 Family Salon reached 4980 Google views this month: what salon service has had the highest inquiry this week? I'll turn your answer into a fresh Google post + a 4-line WhatsApp share note for your clients. Takes 2 min.",
+      "cta": "open_ended",
+      "template_name": "vera_curious_ask_v1"
+    },
+    {
+      "trigger_id": "trg_010_ipl_match_delhi",
+      "merchant_id": "m_005_pizzajunction_restaurant_delhi",
+      "customer_id": null,
+      "body": "Quick heads-up Suresh — DC vs MI at Arun Jaitley Stadium 26 April. On big match days your dine-in covers dip vs your Saturday average as fans order at home. Skipping dine-in promos and spotlighting your active Buy 1 Pizza Get 1 Free (Tue-Thu) captures this stay-at-home surge. Want me to stage the delivery banner and social story now?",
+      "cta": "binary_yes_no",
+      "template_name": "vera_restaurant_ipl_v1"
+    },
+    {
+      "trigger_id": "trg_013_corporate_thali_planning",
+      "merchant_id": "m_006_southindiancafe_restaurant_bangalore",
+      "customer_id": null,
+      "body": "Hi Suresh, here's a starter draft for your corporate lunch packages in Indiranagar:\n\nMylari South Indian Cafe Corporate Lunch Program\n- Anchored on your Weekday Lunch Thali @ ₹149 (currently 18 orders/day)\n- Corporate bulk pricing for weekday office delivery at scale\n- Optional dessert and executive platters for larger catering orders\n\nWant me to stage this bulk offer on your profile and draft a WhatsApp share template for local HR managers?",
+      "cta": "binary_confirm_cancel",
+      "template_name": "vera_planning_v1"
+    },
+    {
+      "trigger_id": "trg_015_winback_rashmi",
+      "merchant_id": "m_007_powerhouse_gym_bangalore",
+      "customer_id": "c_010_rashmi_for_m007",
+      "body": "Hi Rashmi 👋 Karthik from PowerHouse Fitness here. It's been 57 days since your last visit — happens to most members at some point, no judgment. You were working toward weight loss in your 5 months with us. I can hold a free trial class for you this week — reply YES, no commitment, no auto-charge.",
+      "cta": "binary_yes_no",
+      "template_name": "gym_lapse_winback_v1"
+    },
+    {
+      "trigger_id": "trg_011_review_theme_late_delivery",
+      "merchant_id": "m_005_pizzajunction_restaurant_delhi",
+      "customer_id": null,
+      "body": "Hi Suresh, 4 recent reviews flagged delivery delays in Sant Nagar (e.g. \"took 50 mins for a 15 min ride\"). Delivery is a big share of your business (180 delivery vs 95 dine-in this month), so a slow delivery day costs you the most. Want me to stage a Google post promoting your active Buy 1 Pizza Get 1 Free (Tue-Thu) to shift orders into calmer hours?",
+      "cta": "binary_yes_no",
+      "template_name": "vera_review_theme_v1"
+    },
+    {
+      "trigger_id": "trg_019_chronic_refill_grandfather",
+      "merchant_id": "m_009_apollo_pharmacy_jaipur",
+      "customer_id": "c_013_grandfather_for_m009",
+      "body": "Namaste — Apollo Health Plus Pharmacy Malviya Nagar yahan. Mr. Sharma ji ki daily medicines (metformin, atorvastatin, telmisartan) 28 April ko khatam hongi. Same dose, same brand pack ready hai. Senior Citizen 15% OFF applies. free home delivery to your saved address. Reply CONFIRM to dispatch.",
+      "cta": "binary_confirm_cancel",
+      "template_name": "pharmacy_chronic_refill_v1"
+    },
+    {
+      "trigger_id": "trg_016_kids_yoga_program_drafting",
+      "merchant_id": "m_008_zenyoga_gym_chennai",
+      "customer_id": null,
+      "body": "Hi Padma, here's the starter outline for your Kids Yoga Summer Camp in Mylapore:\n\nZen Yoga Studio Kids Yoga Program\n- 4-week camp, 3 classes/week, ages 7-12 as we discussed (₹2,499)\n- Bundled with your active First Month @ ₹499\n\nWant me to stage this to your Google profile for your review?",
+      "cta": "binary_confirm_cancel",
+      "template_name": "vera_planning_v1"
+    },
+    {
+      "trigger_id": "trg_024_perf_spike_zen",
+      "merchant_id": "m_008_zenyoga_gym_chennai",
+      "customer_id": null,
+      "body": "Hi Padma, great traction: your Google calls jumped 15% this week from high-intent searches in Mylapore, driven by your kids yoga post. To convert these visitors into active members before momentum slows, want me to schedule 2 follow-up posts featuring your active First Month @ ₹499?",
+      "cta": "binary_yes_no",
+      "template_name": "vera_perf_spike_v1"
+    },
+    {
+      "trigger_id": "trg_023_competitor_opened_dentist",
+      "merchant_id": "m_001_drmeera_dentist_delhi",
+      "customer_id": null,
+      "body": "Dr. Meera, Smile Studio opened 1.3 km away offering Dental Cleaning @ ₹199. Recommended strategy: don't discount your rates; instead emphasize your digital RVG equipment, strict sterilization standards, and verified doctor experience. Want me to draft 3 Google posts highlighting your clinical quality to protect your margins?",
+      "cta": "binary_yes_no",
+      "template_name": "vera_competitor_defense_v1"
+    },
+    {
+      "trigger_id": "trg_021_unverified_gbp_sunrise",
+      "merchant_id": "m_010_sunrisepharm_pharmacy_lucknow",
+      "customer_id": null,
+      "body": "Vikas, your Google Business Profile in Gomti Nagar is currently unverified. Verifying it unlocks an estimated 30% uplift in local search phone calls and patient map directions. Want me to guide you through the phone verification steps today?",
+      "cta": "binary_yes_no",
+      "template_name": "vera_gbp_unverified_v1"
+    },
+    {
+      "trigger_id": "trg_025_dormancy_glamour",
+      "merchant_id": "m_004_glamour_salon_pune",
+      "customer_id": null,
+      "body": "Hi Anjali, your Google listing reached 1200 views in Aundh this month, but hasn't had fresh posts in 38 days. Publishing a 3-post weekend spotlight for your core services captures these active searchers. Want me to draft the weekend posts for your approval?",
+      "cta": "binary_yes_no",
+      "template_name": "vera_dormancy_check_v1"
+    }
+  ]
+}

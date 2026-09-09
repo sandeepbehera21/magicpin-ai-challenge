@@ -1,6 +1,6 @@
 from __future__ import annotations
 from typing import Any, Dict, List, Literal, Optional, Union
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 # -----------------------------------------------------------------------------
@@ -141,6 +141,8 @@ class ConversationTurn(BaseModel):
 
 
 class CustomerAggregate(BaseModel):
+    model_config = ConfigDict(extra="allow")
+
     total_unique_ytd: Optional[int] = 0
     lapsed_180d_plus: Optional[int] = 0
     retention_6mo_pct: Optional[float] = None
